@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Titulo da página -->
+    <title>Make with G</title>
+    <!-- Conexão com a API e demais funções -->
+    <script src="./js/funcoes.js"></script>
+    <!-- Icone do site, CSS e fonts -->
+    <link rel="icon" href="./assets/icones/heart.png">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Ma<span id="k">k</span>e</h1>
+            <h5>with <span id="g">G</span></h5>
+            <ul class="navbar">
+                <li>
+                    <a href="./index.html">Home</a>
+                </li>
+                <li>
+                    <a href="./maquiagem.html">Maquiagem</a>
+                </li>
+                <li>
+                    <a href="./aboutme.html">Sobre G</a>
+                </li>
+                <li>
+                    <a href="./cadastro.html"><button class="btn-cad-navbar">Cadastro</button></a>
+                </li>
+                <li>
+                    <a href="./login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Formulário -->
+
+    <div class="container-form ">
+        <div class="banner-login-cad">
+            <div class="formulario">
+                <div class="form_cadastro">
+                    <h1>Bem-vindo!</h1>
+                    <p>Nome Completo:</p>
+                    <br>
+                    <input id="nome_input" type="text" placeholder="Nome Completo">
+                    <br>
+                    <br>
+                    <p>Seu melhor e-mail:</p>
+                    <br>
+                    <input id="email_input" type="text" placeholder="email@email.com">
+                    <br>
+                    <br>
+                    <p>Sua nova senha:</p>
+                    <br>
+                    <input id="senha_input" type="password" placeholder="******">
+                    <br>
+                    <br>
+                    <p>Repita a senha:</p>
+                    <br>
+                    <input id="confirmacao_senha_input" type="password" placeholder="******">
+                    <br>
+                    <br>
+                    <p>Nome de usuário:</p>
+                    <br>
+                    <input id="nomeuser_input" type="text" placeholder="Nome de exibição na página">
+                    <br>
+                    <br>
+                    <h6>Qual seu genêro?</h6>
+                    <div class="genero">
+                        <select id="select" name="select">
+                            <option value=""></option>
+                            <option value="feminino">Feminino</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="naoespecificado">Outro/Não Especificado</option>
+                        </select>
+                    </div>
+                    <button class="btn-cad" onclick="cadastrar()">Cadastrar</button>
+                </div>
+                <br>
+            </div>
+        </div>
+
+
+        <div id="div_aguardar" class="loading-div">
+            <img src="./assets/circle-loading.gif" id="loading-gif">
+        </div>
+
+        <div id="div_erros_login">
+
+        </div>
+    </div>
+
+
+
+    <div class="footer">
+        <div class="container">
+            <h4>Make with G tem todos os direitos reservados &copy; 2021</h4>
+        </div>
+        <div class="redes-sociais">
+            <ul>
+                <li>
+                    <img src="./assets/imagens/deezer.png" alt="Deezer" class="deezer">
+                </li>
+                <li>
+                    <img src="./assets/imagens/github.png" alt="github" class="github">
+                </li>
+                <li>
+                    <img src="./assets/imagens/instagram (1).png" alt="instagram" class="instagram">
+                </li>
+                <li>
+                    <img src="./assets/imagens/linkedin (1).png" alt="linkedin" class="linkedin">
+                </li>
+                <li>
+                    <img src="./assets/imagens/facebook (1).png" alt="facebook" class="facebook">
+                </li>
+                <li>
+                    <img src="./assets/imagens/figma.png" alt="figma" class="figma">
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    function cadastrar() {
+        aguardar();
+
+        var nome = nome_input.value;
+        var email = email_input.value;
+        var senha = senha_input.value;
+        var confirmacaosenha = confirmacao_senha_input.value;
+        var nomeusuario = nomeuser_input.value;
+        var genero = select.value;
+        if (nome == "" || email == "" || senha == "" || confirmacaosenha == "" || nomeusuario == "" || genero == "") {
+
+            window.alert("Preencha todos os campos para prosseguir!");
+            if (nome == "") {
+                console.log('nome está em branco')
+            }
+            if (email == "") {
+                console.log('email está em branco')
+            }
+            if (senha == "") {
+                console.log('senha está em branco')
+            }
+            if (confirmacaosenha == "") {
+                console.log('confirmacao da eenha está em branco')
+            }
+            if (nomeusuario == "") {
+                console.log('nome de usuario está em branco')
+            }
+            if (genero == "") {
+                console.log('genero não foi preenchido')
+            }
+            finalizarAguardar();
+            return false;
+        }
+
+        if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+            finalizarAguardar();
+            return false;
+        }
+
+        if (senha != confirmacaosenha) {
+            window.alert("As senhas inseridas devem ser iguais para prosseguir!");
+            finalizarAguardar();
+            return false;
+        }
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nome,
+                emailServer: email,
+                senhaServer: senha,
+                senhaconfrimacaoServer : confirmacaosenha,
+                nomeusuarioServer : nomeusuario,
+                generoServer: genero,
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Cadastro realizado com sucesso!");
+                window.location = "login.html";
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+</script>

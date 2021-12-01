@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Titulo da página -->
+    <title>Make with G - Beleza</title>
+    <!-- Conexão com a API e demais funções -->
+    <script src="./js/funcoes.js"></script>
+    <!-- Icone do site, CSS e fonts -->
+    <link rel="icon" href="./assets/icones/heart.png">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Header da página -->
+    <div class="header">
+        <div class="container">
+            <h1>Ma<span id="k">k</span>e</h1>
+            <h5>with <span id="g">G</span></h5>
+            <ul class="navbar">
+                <li>
+                    <a href="./index_login.html">Home</a>
+                </li>
+                <li>
+                    <a href="./maquiagem_login.html" class="agora">Maquiagem</a>
+                </li>
+                <li>
+                    <a href="./aboutme_login.html">Sobre G</a>
+                </li>
+                <li>
+                    <a href="./pagina-usuario.html">Meu Perfil</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Conteúdo do about-me -->
+
+    <div class="about">
+        <div class="aboutme">
+            <h1>A Make with G </h1>
+            <label for="" class="text-about">
+                <p>Amante de maquiagem desde os 9 anos de idade. Começo a se interessar pelo mundo da beleza e seus segredos aos 14 anos e desde então vem aperfeiçoando sua técnicas e pesquisando sobre os produtos e a revolução tecnológica no mundo da maquiagem.
+                    Resenhas de produtos, teste de maquiagens e tudo o que você precisa saber sobre este mundo você irá encontrar aqui e o melhor, com o selo de aprovação de "GabsApproves".
+                    
+                </p>
+            </label>
+            <label for="" class="img-g">
+                <img src="./assets/imagens/Gabriela.jpg" alt="Gabriela">
+            </label>
+            <label class="socio">
+                <h3>Agradecimentos</h3>
+                <h6>Ao Projeto Geração Futura</h6>
+                <p> Modelo de ensino. Onde eu como aluna SPTech aprendi que existe uma simbiose entre o mundo acadêmico e o mundo empresarial, aflorei minha formação socioemocional e que hoje é tão importante quanto a técnica.
+                    
+                    Aqui todos nós acreditamos que esse projeto pode ser modelo de educação para outras instituições Brasil a fora e revoluicionar o sistema de ensino no país.
+                </p>
+                <img src="./assets/imagens/sptech_logo.png" alt="SPTech">
+            </label>
+            <label class="professores">
+                <h3>Aos professores</h3>
+                <p>Por me encorajarem e mostrar que somos maiores que nossos limites e crenças. Agradeço por toda dedicação, tempo e conteúdo aplicado durantes esses meses de aula, juntos caminhamos até aqui. Devo muito à todos vocês, aos monitores e mentores. Obrigada por acreditarem em mim quando nem eu mesma sentia que poderia chegar até aqui.</p>
+            </label>
+            <label class="grupo-prof">
+                <img src="./assets/imagens/fernando-brandao.jpg" alt="">
+                <img src="./assets/imagens/thiago-bonacelli.jpg" alt="">
+                <img src="./assets/imagens/alexander-barreira.jpg" alt="">
+                <img src="./assets/imagens/frizza.jpg" alt="">
+                <img src="./assets/imagens/kaline.jpg" alt="">
+                <img src="./assets/imagens/vera-goulart.jpg" alt="">
+            </label>
+        </div>
+    </div>
+
+    <!-- Footer do site -->
+    <div class="footer">
+        <div class="container">
+            <h4>Make with G tem todos os direitos reservados &copy; 2021</h4>
+        </div>
+        <div class="redes-sociais">
+            <ul>
+                <li>
+                    <img src="./assets/imagens/deezer.png" alt="Deezer" class="deezer">
+                </li>
+                <li>
+                    <img src="./assets/imagens/github.png" alt="github" class="github">
+                </li>
+                <li>
+                    <img src="./assets/imagens/instagram (1).png" alt="instagram" class="instagram">
+                </li>
+                <li>
+                    <img src="./assets/imagens/linkedin (1).png" alt="linkedin" class="linkedin">
+                </li>
+                <li>
+                    <img src="./assets/imagens/facebook (1).png" alt="facebook" class="facebook">
+                </li>
+                <li>
+                    <img src="./assets/imagens/figma.png" alt="figma" class="figma">
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+        function contar() {
+        impressao5.innerHTML = "";
+        
+        fetch("/usuarios/usuarios").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    impressao.innerHTML = resposta.contagem_usuarios;
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+
+        });
+    }
+</script>
+</html>
